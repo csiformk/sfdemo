@@ -1,7 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ titre }}{% endblock %}
+{% block title %}
+	{{ titre }}
+{% endblock %}
 
 {% block body %}
-<h1>Welcome {{ nom }}</h1>
+	<h1>Welcome
+		{{ nom|upper }}</h1>
+
+	{# Un commmentaire dans twig #}
+
+	{% for user in users %}
+		<ul>
+			<li>{{ user.nom }}</li>
+			<li>{{ user.email }}</li>
+			<li>{{ user.age }}</li>
+		</ul>
+	{% endfor %}
+
+	<a href="{{ path('app_lucky_number') }}">Lucky Number</a>
+
 {% endblock %}
