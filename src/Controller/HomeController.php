@@ -9,18 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
 
-    public $users = [
-        [
-            'nom' => 'Jon Doe',
-            'email' => 'jodo@gmail.com',
-            'age' => 23
-        ],
-        [
-            'nom' => 'Jane Doue',
-            'email' => 'jadou@gmail.com',
-            'age' => 42
-        ],
-    ];
+    // public $users = [
+    //     [
+    //         'nom' => 'Jon Doe',
+    //         'email' => 'jodo@gmail.com',
+    //         'age' => 23
+    //     ],
+    //     [
+    //         'nom' => 'Jane Doue',
+    //         'email' => 'jadou@gmail.com',
+    //         'age' => 42
+    //     ],
+    // ];
+    public $users = [];
 
     #[Route('/', name: 'app_home')]
     public function index(): Response
