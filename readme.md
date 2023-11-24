@@ -9,3 +9,5 @@ Lister toutes les routes de votre application symfony : `symfony console debug:r
 Installation du **maker-bundle** : `composer require symfony/maker-bundle`
 
 Création d'un **controller** avec **maker-bundle** : `symfony console make:controller` ou `composer bin/console make:controller`
+
+[Twig Docs](https://twig.symfony.com/)
