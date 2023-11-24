@@ -10,6 +10,10 @@
 
 	{# Un commmentaire dans twig #}
 
+	{# Afin d'utiliser dump dans twig il faut installer debug-bundle :
+	composer require --dev symfony/debug-bundle #}
+	{# {% dump users %} #}
+
 	{% if users %}
 
 		{% for user in users %}
