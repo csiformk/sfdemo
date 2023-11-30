@@ -13,5 +13,6 @@ Création d'un **controller** avec **maker-bundle** : `symfony console make:cont
 [Twig Docs](https://twig.symfony.com/)
 
 - Démarrer le server symfony : `symfony.exe server:start`
+- Démarrer le server symfony en tache de fond : `symfony.exe server:start -d`
 - Arreter le server symfony : `symfony.exe server:stop`
 - Lister les servers symfony lancés : `symfony.exe server:list`
