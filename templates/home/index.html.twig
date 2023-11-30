@@ -1,35 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	{{ titre }}
-{% endblock %}
-
 {% block body %}
-	<h1>Welcome
-		{{ nom|upper }}</h1>
+	{% if formations %}
 
-	{# Un commmentaire dans twig #}
+		<section class="d-flex gap-3">
 
-	{# Afin d'utiliser dump dans twig il faut installer debug-bundle :
-	composer require --dev symfony/debug-bundle #}
-	{# {% dump users %} #}
+			{% for formation in formations %}
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">{{ formation.nom | lower | capitalize }}</h5>
+						<p class="card-text">{{ formation.description }}</p>
+						<p>{{ formation.lieux }}</p>
+						<a href="{{ path('app_index_show', { id : formation.id }) }}" class="btn btn-primary">En savois plus</a>
+					</div>
+				</div>
+			{% endfor %}
 
-	{% if users %}
-
-		{% for user in users %}
-			<ul>
-				<li>{{ user.nom }}</li>
-				<li>{{ user.email }}</li>
-				<li>{{ user.age }}</li>
-			</ul>
-		{% endfor %}
+		</section>
 
 	{% else %}
 
-		<p>Aucun user !!!!</p>
+		<p>Aucune formation !!!!</p>
 
 	{% endif %}
-
-	<a href="{{ path('app_lucky_number') }}">Lucky Number</a>
 
 {% endblock %}

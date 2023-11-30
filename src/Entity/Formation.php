@@ -25,9 +25,6 @@ class Formation
     #[ORM\Column(length: 255)]
     private ?string $lieux = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $truc = null;
-
     #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'formations')]
     private Collection $categorie;
 
@@ -73,18 +70,6 @@ class Formation
     public function setLieux(string $lieux): static
     {
         $this->lieux = $lieux;
-
-        return $this;
-    }
-
-    public function getTruc(): ?string
-    {
-        return $this->truc;
-    }
-
-    public function setTruc(string $truc): static
-    {
-        $this->truc = $truc;
 
         return $this;
     }
