@@ -19,7 +19,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_index_show', methods: ['GET'])]
+    #[Route('/home/{id}', name: 'app_index_show', methods: ['GET'])]
     public function show(Formation $formation): Response
     {
         return $this->render('home/show.html.twig', [
