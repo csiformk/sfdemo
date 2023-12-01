@@ -9,7 +9,7 @@
 				<div class="card" style="width: 18rem;">
 					<div class="card-body">
 						<h5 class="card-title">{{ formation.nom | lower | capitalize }}</h5>
-						<p class="card-text">{{ formation.description }}</p>
+						<p class="card-text">{{ formation.description | slice (0,50)}} (...)</p>
 						<p>{{ formation.lieux }}</p>
 						<a href="{{ path('app_index_show', { id : formation.id }) }}" class="btn btn-primary">En savois plus</a>
 					</div>
