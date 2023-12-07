@@ -33,21 +33,28 @@ class DashboardController extends AbstractDashboardController
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
-        // return $this->render('some/path/my-dashboard.html.twig');
+        return $this->render('admin/dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('CEPPIC Admin');
+            ->setTitle('CEPPIC Admin')
+            ->renderContentMaximized();
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
-        yield MenuItem::LinktoRoute('Retour au site', 'fa fa-home', 'app_home');
-        yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Categorie::class);
-        yield MenuItem::linkToCrud('Formation', 'fas fa-list', Formation::class);
-        yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
+        return [
+            MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard'),
+            MenuItem::LinktoRoute('Retour au site', 'fa fa-home', 'app_home'),
+
+            MenuItem::section('Formation'),
+            MenuItem::linkToCrud('Categorie', 'fas fa-list', Categorie::class),
+            MenuItem::linkToCrud('Formation', 'fas fa-list', Formation::class),
+
+            MenuItem::section('Users'),
+            MenuItem::linkToCrud('User', 'fas fa-user', User::class),
+        ];
     }
 }
