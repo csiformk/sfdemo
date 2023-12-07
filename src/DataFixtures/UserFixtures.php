@@ -21,7 +21,6 @@ class UserFixtures extends Fixture
     {
         $faker = Factory::create();
         
-        for ($i = 0; $i < 1; $i++) :
             $user = new User();
 
             $user->setEmail('test@test.fr');
@@ -33,12 +32,22 @@ class UserFixtures extends Fixture
                     // $user,$faker->password()
                 )
             );
+
+            $user->setEmail('demo@demo.fr');
+            // $user->setEmail($faker->email());
+            $user->setRoles(['ROLE_USER']);
+            $user->setPassword(
+                $this->userPasswordHasherInterface->hashPassword(
+                    $user, "demo"
+                    // $user,$faker->password()
+                )
+            );
             
             //$user->setPassword('motdedepasse');
             //$user->setPassword($faker->password());
 
             $manager->persist($user);
-        endfor;
+
 
         $manager->flush();
     }
