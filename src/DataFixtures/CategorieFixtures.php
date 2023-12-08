@@ -2,23 +2,21 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Formation;
+use App\Entity\Categorie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class FormationFixtures extends Fixture
+class CategorieFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
         
         for ($i = 0; $i < 10; $i++) :
-            $formation = new Formation();
+            $formation = new Categorie();
 
-            $formation->setNom($faker->words(3, true));
-            $formation->setDescription($faker->paragraphs(20, true));
-            $formation->setLieux($faker->city());
+            $formation->setNom($faker->word());
 
             $manager->persist($formation);
         endfor;

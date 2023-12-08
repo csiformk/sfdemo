@@ -22,27 +22,26 @@ class UserFixtures extends Fixture
         $faker = Factory::create();
         
             $user = new User();
-
             $user->setEmail('test@test.fr');
-            // $user->setEmail($faker->email());
             $user->setRoles(['ROLE_USER']);
             $user->setPassword(
                 $this->userPasswordHasherInterface->hashPassword(
-                    $user, "motdepasse"
-                    // $user,$faker->password()
+                    $user, "test"
                 )
             );
+            $manager->persist($user);
 
+            $user = new User();
             $user->setEmail('demo@demo.fr');
-            // $user->setEmail($faker->email());
             $user->setRoles(['ROLE_USER']);
             $user->setPassword(
                 $this->userPasswordHasherInterface->hashPassword(
                     $user, "demo"
-                    // $user,$faker->password()
                 )
             );
+            $manager->persist($user);
 
+            $user = new User();
             $user->setEmail('admin@free.fr');
             $user->setRoles(['ROLE_ADMIN']);
             $user->setPassword(
@@ -50,12 +49,7 @@ class UserFixtures extends Fixture
                     $user, "admin"
                 )
             );
-            
-            //$user->setPassword('motdedepasse');
-            //$user->setPassword($faker->password());
-
             $manager->persist($user);
-
 
         $manager->flush();
     }
