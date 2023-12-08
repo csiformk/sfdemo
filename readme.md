@@ -12,7 +12,15 @@ Création d'un **controller** avec **maker-bundle** : `symfony console make:cont
 
 [Twig Docs](https://twig.symfony.com/)
 
-- Démarrer le server symfony : `symfony.exe server:start`
-- Démarrer le server symfony en tache de fond : `symfony.exe server:start -d`
-- Arreter le server symfony : `symfony.exe server:stop`
-- Lister les servers symfony lancés : `symfony.exe server:list`
+## Symfony server
+
+- Démarrer le server symfony : `symfony server:start`
+- Démarrer le server symfony en tache de fond : `symfony server:start -d`
+- Arreter le server symfony : `symfony server:stop`
+- Lister les servers symfony lancés : `symfony server:list`
+
+## Symfony doctrine
+
+Copier le fichier `.env` en `.env.local` , le personnaliser
+
+`symfony console database:doctrine:create`

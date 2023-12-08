@@ -42,6 +42,14 @@ class UserFixtures extends Fixture
                     // $user,$faker->password()
                 )
             );
+
+            $user->setEmail('admin@free.fr');
+            $user->setRoles(['ROLE_ADMIN']);
+            $user->setPassword(
+                $this->userPasswordHasherInterface->hashPassword(
+                    $user, "admin"
+                )
+            );
             
             //$user->setPassword('motdedepasse');
             //$user->setPassword($faker->password());
