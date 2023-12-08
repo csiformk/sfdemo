@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\FormationRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,10 +23,6 @@ class Formation
     #[ORM\Column(length: 255)]
     private ?string $lieux = null;
 
-    public function __construct()
-    {
-        $this->categorie = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
