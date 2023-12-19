@@ -11,6 +11,21 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: pma
+    restart: always
+    ports:
+      - 8005:80
+    environment:
+      - PMA_ARBITRARY=1
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8006:8080
+
   mailer:
     image: schickling/mailcatcher
     ports: ["1025:1025", "1080:1080"]
