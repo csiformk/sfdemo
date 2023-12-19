@@ -1,3 +1,7 @@
 .Logo.img {
     max-width: 100px;
  }
+
+ foo input {
+    color:red;
+ }

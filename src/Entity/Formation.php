@@ -23,6 +23,10 @@ class Formation
     #[ORM\Column(length: 255)]
     private ?string $lieux = null;
 
+    #[ORM\ManyToOne(inversedBy: 'formations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
 
     public function getId(): ?int
     {
@@ -61,6 +65,18 @@ class Formation
     public function setLieux(string $lieux): static
     {
         $this->lieux = $lieux;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
