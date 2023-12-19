@@ -18,14 +18,13 @@ class Categorie
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Formation::class)]
+    #[ORM\ManyToMany(targetEntity: Formation::class, mappedBy: 'categorie')]
     private Collection $formations;
 
     public function __construct()
     {
         $this->formations = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -56,7 +55,7 @@ class Categorie
     {
         if (!$this->formations->contains($formation)) {
             $this->formations->add($formation);
-            $formation->setCategorie($this);
+            $formation->addCategorie($this);
         }
 
         return $this;
@@ -65,12 +64,12 @@ class Categorie
     public function removeFormation(Formation $formation): static
     {
         if ($this->formations->removeElement($formation)) {
-            // set the owning side to null (unless already changed)
-            if ($formation->getCategorie() === $this) {
-                $formation->setCategorie(null);
-            }
+            $formation->removeCategorie($this);
         }
 
         return $this;
     }
+
+
+
 }
